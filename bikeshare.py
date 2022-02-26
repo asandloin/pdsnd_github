@@ -174,14 +174,17 @@ def user_stats(df):
 
 
 def display_data(df):
+    """Displays individual rows of bikeshare data 5 rows at a time."""
+
+    # asks user if they want to view individual data, shows the next 5 rows of data as long as the user answers yes
 	view_data = input('\nWould you like to view 5 rows of individual trip data? Enter yes or no.\n').lower()
 	start_loc = 0
 	while (view_data == 'yes'):
 		print(df.iloc[start_loc:start_loc+5])
 		start_loc += 5
 		view_data = input("Do you wish to view the next 5 rows of individual data? Enter yes or no.\n").lower()
-        
-        
+
+
 def main():
     while True:
         city, month, day = get_filters()
