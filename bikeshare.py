@@ -20,19 +20,19 @@ def get_filters():
     """
     print('\nHello! Let\'s explore some US bikeshare data!')
     # get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
-    city = input('\nWould you like to see data for ' + '{0}, {1},'.format(*CITY_DATA).title() + ' or ' + '{2}?\n'.format(*CITY_DATA).title()).lower().strip()
+    city = input('\nWould you like to see data for {0}, {1}, or {2}?\n'.format(*CITY_DATA).title()).lower().strip()
     while city not in [*CITY_DATA]:
-        city = input('\nCity entered was not recognized. Please enter one of the following cities: ' + '{0}, {1},'.format(*CITY_DATA).title() + ' or ' + '{2}.\n'.format(*CITY_DATA).title()).lower().strip()
+        city = input('\nCity entered was not recognized. Please enter one of the following cities: {0}, {1}, or {2}.\n'.format(*CITY_DATA).title()).lower().strip()
 
     # get user input for month (all, january, february, ... , june)
     month = input('\nPlease enter a month from January-June or enter All.\n').lower().strip()
     while month not in months and month != 'all':
-        month = input('\nThat was not a valid selection. Please enter a month from the following: January, February, March, April, May, June or All.\n').lower().strip()
+        month = input('\nThat was not a valid selection. Please enter a month from the following: {0}, {1}, {2}, {3}, {4}, {5} or All.\n'.format(*months).title()).lower().strip()
 
     # get user input for day of week (all, monday, tuesday, ... sunday)
     day = input('\nPlease enter a day from Monday-Sunday or enter All.\n').lower().strip()
     while day not in days and day != 'all':
-        day = input('\nThat was not a valid selection. Please enter a day from the following: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday or All.\n').lower().strip()
+        day = input('\nThat was not a valid selection. Please enter a day from the following: {0}, {1}, {2}, {3}, {4}, {5}, {6} or All.\n'.format(*days).title()).lower().strip()
 
     print('-'*40)
     return city, month, day
@@ -62,7 +62,6 @@ def load_data(city, month, day):
     # filter by month if applicable
     if month != 'all':
         # use the index of the months list to get the corresponding int
-        months = ['january', 'february', 'march', 'april', 'may', 'june']
         month = months.index(month) + 1
         # filter by month to create the new dataframe
         df = df[df['month'] == month]
@@ -177,12 +176,12 @@ def display_data(df):
     """Displays individual rows of bikeshare data 5 rows at a time."""
 
     # asks user if they want to view individual data, shows the next 5 rows of data as long as the user answers yes
-	view_data = input('\nWould you like to view 5 rows of individual trip data? Enter yes or no.\n').lower()
+	view_data = input('\nWould you like to view 5 rows of individual trip data? Enter yes or no.\n').lower().strip()
 	start_loc = 0
 	while (view_data == 'yes'):
 		print(df.iloc[start_loc:start_loc+5])
 		start_loc += 5
-		view_data = input("Do you wish to view the next 5 rows of individual data? Enter yes or no.\n").lower()
+		view_data = input("Do you wish to view the next 5 rows of individual data? Enter yes or no.\n").lower().strip()
 
 
 def main():
@@ -196,8 +195,8 @@ def main():
         user_stats(df)
         display_data(df)
 
-        restart = input('\nWould you like to restart? Enter yes or no.\n')
-        if restart.lower() != 'yes':
+        restart = input('\nWould you like to restart? Enter yes or no.\n').lower().strip()
+        if restart != 'yes':
             break
 
 
