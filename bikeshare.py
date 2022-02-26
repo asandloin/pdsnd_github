@@ -20,19 +20,19 @@ def get_filters():
     """
     print('\nHello! Let\'s explore some US bikeshare data!')
     # get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
-    city = input('\nWould you like to see data for ' + '{0}, {1},'.format(*CITY_DATA).title() + ' or ' + '{2}?\n'.format(*CITY_DATA).title()).lower().strip()
+    city = input('\nWould you like to see data for {0}, {1}, or {2}?\n'.format(*CITY_DATA).title()).lower().strip()
     while city not in [*CITY_DATA]:
-        city = input('\nCity entered was not recognized. Please enter one of the following cities: ' + '{0}, {1},'.format(*CITY_DATA).title() + ' or ' + '{2}.\n'.format(*CITY_DATA).title()).lower().strip()
+        city = input('\nCity entered was not recognized. Please enter one of the following cities: {0}, {1}, or {2}.\n'.format(*CITY_DATA).title()).lower().strip()
 
     # get user input for month (all, january, february, ... , june)
     month = input('\nPlease enter a month from January-June or enter All.\n').lower().strip()
     while month not in months and month != 'all':
-        month = input('\nThat was not a valid selection. Please enter a month from the following: January, February, March, April, May, June or All.\n').lower().strip()
+        month = input('\nThat was not a valid selection. Please enter a month from the following: {0}, {1}, {2}, {3}, {4}, {5} or All.\n'.format(*months).title()).lower().strip()
 
     # get user input for day of week (all, monday, tuesday, ... sunday)
     day = input('\nPlease enter a day from Monday-Sunday or enter All.\n').lower().strip()
     while day not in days and day != 'all':
-        day = input('\nThat was not a valid selection. Please enter a day from the following: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday or All.\n').lower().strip()
+        day = input('\nThat was not a valid selection. Please enter a day from the following: {0}, {1}, {2}, {3}, {4}, {5}, {6} or All.\n'.format(*days).title()).lower().strip()
 
     print('-'*40)
     return city, month, day
